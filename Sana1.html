@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Londrina+Shadow&family=Oleo+Script:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Londrina+Shadow&family=Oleo+Script:wght@400;700&family=Parkinsans:wght@300..800&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+
+
+  <title>Sana Taeb</title>
+  <style>
+    body {
+      text-align: center;
+      background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1HE1uVydtxemalFsvuwgMguZMD51pD_jlHQ&s");
+      background-size: cover;
+      background-position: center;
+      color: pink;
+        font-family: "Dancing Script", cursive;
+    }
+    p {
+      font-size: 22px;
+    }
+    input {
+      border: 0;
+      padding: 10px;
+      font-size: 18px;
+    }
+    input[type="submit"] {
+      background: pink;
+      color: grey;
+        font-family: "Parkinsans", sans-serif;
+    }
+    img {
+      border-radius: 300px;
+      }
+  </style>
+</head>
+<body>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtzcJtCfyNpiTu-yBBYctXgtmKs3BX7N7pjA&s">
+  <p>Hi! I'm Sana Taeb, a student in Jamaica Gateway High School.</p>
+	<input id="Name" placeholder="Your name">
+  <input id="Email" placeholder="Your email">
+  <input id="submit" type="submit">
+	
+	<script type="module">
+	  // Import the functions you need from the SDKs you need
+	  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+		import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+	  // TODO: Add SDKs for Firebase products that you want to use
+	  // https://firebase.google.com/docs/web/setup#available-libraries
+
+	  // Your web app's Firebase configuration
+	  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	  const firebaseConfig = {
+	    apiKey: "AIzaSyAq9FkFKm3Io8S-hbkGoSSBwrVREc0tJhg",
+	    authDomain: "sana1-2f77b.firebaseapp.com",
+	    projectId: "sana1-2f77b",
+	    storageBucket: "sana1-2f77b.firebasestorage.app",
+	    messagingSenderId: "277378269700",
+	    appId: "1:277378269700:web:a1f3ff164c08e4d7c9ab51",
+	    measurementId: "G-02BCVDSBZD"
+	  };
+
+	  // Initialize Firebase
+	  const app = initializeApp(firebaseConfig);
+		const db = getDatabase(app);
+
+
+		const Name = document.querySelector("#Name") 
+		const Email = document.querySelector("#Email")
+		document.querySelector('#submit').addEventListener('click', Submit)
+		
+		
+		function Submit() {
+		  const timestamp = buildTimestamp()
+	  
+		  set(ref(db, timestamp), {
+			  Name: Name.value,
+		      email: Email.value,
+		  });
+
+		  Name.value = ""
+		  Email.value = ""
+		}
+		function buildTimestamp() {
+		  const now = new Date();
+		  let timestamp = now.getFullYear().toString() + "/";
+		  //const month = now.toLocaleString('default', { month: 'long' });
+
+		  let month = now.getMonth()+1   //add 1 because Javascript uses 0 for January
+		  month = month.toString()
+		  month = addLeadingZero(month)
+		  timestamp += month + "/"; 
+
+		  let date = now.getDate().toString()
+		  date = addLeadingZero(date)
+		  timestamp += date + "/";
+
+		  let hours = now.getHours().toString()
+		  hours = addLeadingZero(hours)
+		  timestamp += hours + ":";
+
+		  let minutes = now.getMinutes().toString()
+		  minutes = addLeadingZero(minutes)
+		  timestamp += minutes + ":";
+
+		  let seconds = now.getSeconds().toString()
+		  seconds = addLeadingZero(seconds)
+		  timestamp += seconds;
+  
+		  return timestamp
+		}
+	
+		function addLeadingZero(units) {
+			if (units.length < 2) {
+				units = "0" + units
+			}
+			return units
+		}
+		
+	</script>
+</body>
+
