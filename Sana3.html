@@ -72,6 +72,11 @@ small {
 .dessert{
   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC5zO09hN1UHJ9ZxWg2cGJdP3K7NSIPeIy1Q&s");
 }
+.fourth{
+    background-image:
+url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxDIBKWRQWja9b128TVshvbVDNiaN__ZvyDQ&s")
+}
+
 .price {
   float: right;
 }
@@ -124,7 +129,11 @@ Spanish and Mexican flan are very similar in taste and texture, but the ingredie
   <small>This delicious tres leches cake features three types of milk: whole milk, condensed milk, and evaporated milk. It's topped with sweet whipped cream. An excellent cake for milk lovers! It doesn't get much more decadent than tres leches cake.  </small></p>
 </div>
 
-
+<div class="fourth">
+<input class="quantities" type="number" min="0" style="width: 50px"> 
+  <p>Cheesecake <span class="price">$9</span><br />
+  <small> Cheesecake is a dessert made with a soft fresh cheese (typically cottage cheese, cream cheese, quark or ricotta), eggs, and sugar. Cheesecake may be baked or unbaked, and is usually served chilled. </small></p>
+</div>
 
 	 <br><br>
 	<input id="Name" placeholder="Your name">
@@ -164,7 +173,7 @@ Spanish and Mexican flan are very similar in taste and texture, but the ingredie
 		const Name = document.querySelector("#Name") 
 		const Email = document.querySelector("#Email")
   	const quantities = document.querySelectorAll(".quantities") 
-		const itemsList = ["Latte", "Flan", "Tres leches"]
+		const itemsList = ["Latte", "Flan", "Tres leches", "Cheesecake"]
   	const prices = document.querySelectorAll(".price") 
 		document.querySelector('#submit').addEventListener('click', Submit)
 		
